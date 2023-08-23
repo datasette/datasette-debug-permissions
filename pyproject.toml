@@ -1,0 +1,26 @@
+[project]
+name = "datasette-debug-permissions"
+version = "0.1"
+description = "A Datasette plugin that outputs debug information about permission checks"
+readme = "README.md"
+authors = [{name = "Simon Willison"}]
+license = {text = "Apache-2.0"}
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Framework :: Datasette",
+]
+dependencies = [
+    "datasette",
+]
+
+[project.urls]
+Homepage = "https://github.com/datasette/datasette-debug-permissions"
+Changelog = "https://github.com/datasette/datasette-debug-permissions/releases"
+Issues = "https://github.com/datasette/datasette-debug-permissions/issues"
+CI = "https://github.com/datasette/datasette-debug-permissions/actions"
+
+[project.entry-points.datasette]
+debug_permissions = "datasette_debug_permissions"
+
+[project.optional-dependencies]
+test = ["pytest"]
