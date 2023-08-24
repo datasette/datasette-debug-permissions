@@ -16,7 +16,8 @@ def test_datasette_debug_permissions():
         }
     ]
     # Should have logged to stderr:
-    assert (
-        result.stderr
-        == "permission_allowed: action=view-instance, resource=<None>, actor=<None>\n"
+    assert result.stderr.startswith(
+        "permission_allowed: action=view-instance, resource=<None>, actor=<None>\n\n"
     )
+    # Should have three stack frames:
+    assert result.stderr.count(" File ") == 3

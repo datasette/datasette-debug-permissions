@@ -22,16 +22,28 @@ See [Authentication and permissions](https://docs.datasette.io/en/stable/authent
 ## Example output
 
 ```
-INFO:     Uvicorn running on http://127.0.0.1:8833 (Press CTRL+C to quit)
+INFO:     Uvicorn running on http://127.0.0.1:8434 (Press CTRL+C to quit)
 permission_allowed: action=view-instance, resource=<None>, actor=<None>
-permission_allowed: action=view-database, resource=_internal, actor=<None>
-permission_allowed: action=view-database, resource=mydatabase, actor=<None>
-permission_allowed: action=view-database, resource=mydatabase, actor=<None>
-permission_allowed: action=view-table, resource=('mydatabase', 'mytable'), actor=<None>
-permission_allowed: action=view-table, resource=('mydatabase', 'mytable'), actor=<None>
-permission_allowed: action=view-instance, resource=<None>, actor=<None>
-permission_allowed: action=view-instance, resource=<None>, actor=<None>
-permission_allowed: action=debug-menu, resource=<None>, actor=<None>
+
+  File "/datasette/views/base.py", line 134, in view
+    return await self.dispatch_request(request)
+
+  File "/datasette/views/base.py", line 91, in dispatch_request
+    return await handler(request)
+
+  File "/datasette/views/index.py", line 23, in get
+    await self.ds.ensure_permissions(request.actor, ["view-instance"])
+
+permission_allowed: action=view-database, resource=_memory, actor=<None>
+
+  File "/datasette/views/base.py", line 91, in dispatch_request
+    return await handler(request)
+
+  File "/datasette/views/index.py", line 26, in get
+    database_visible, database_private = await self.ds.check_visibility(
+
+  File "/datasette/app.py", line 760, in check_visibility
+    await self.ensure_permissions(actor, permissions)
 ```
 
 ## Development
