@@ -1,6 +1,6 @@
 [project]
 name = "datasette-debug-permissions"
-version = "0.1"
+version = "0.2"
 description = "A Datasette plugin that outputs debug information about permission checks"
 readme = "README.md"
 authors = [{name = "Simon Willison"}]
