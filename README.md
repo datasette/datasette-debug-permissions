@@ -58,14 +58,6 @@ Now install the dependencies and test dependencies:
 ```
 pip install -e '.[test]'
 ```
-To install the JavaScript build dependencies, run this:
-```bash
-npm install
-```
-You can use the [Just](https://github.com/casey/just) command runner to build the TypeScript to minified JavaScript like this:
-```bash
-just js
-```
 To run the tests:
 ```bash
 pytest
